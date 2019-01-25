@@ -47,6 +47,23 @@ Promise.all([
 		
 		console.log(migrationAugmented);
 
+
+//fromUs--840
+		const usData = d3.nest()
+		.key(d => d.year)
+		//array of 1145
+		.entries(migrationAugmented.filter(d => d.origin_code == "840"))
+		.map(function(a){
+				return {
+			year: +a.key, //can just transform 2 code
+			total : d3.sum(a.values, d => d.value),//the arrary of 200 individual migration flows
+			max:d3.max(a.values, d => d.value),
+			min:d3.min(a.values, d => d.value)
+			}
+		})
+
+
+/*
 		const migrationBySubregion = d3.nest()
 		.key(d => d.origin_subregion)
 		.rollup(values => d3.sum(values, d => d.value))
@@ -54,8 +71,125 @@ Promise.all([
 
 		console.log(migrationBySubregion);
 
+*/
+
+/*
+	lineChart(
+		data, // this is the US migration data
+		d3.select(".module").node()//<div> element with class "module"
+		//read API: d3.selection
+		)
+*/
+//Group by subregion, and then year
+	const subregionsData = d3.nest()
+	.key(d => d.dest_subregion)
+	.key(d => d.year)
+	.rollup(values => d3.sum(values, d => d.value))//values: second values
+	.entries(migrationAugmented);
+
+	d3.select(".main")
+		.selectAll("chart")//0
+		.data(subregionsData)//18
+		.enter()
+		.append("div")
+		.attr("class","chart")
+		//check api &call() check more example selection.each()
+		.each(function(d){ 
+			// console.group();
+			// console.log(this);//only valid in function refer to div
+			// console.log(d);
+			// console.groupEnd();
+
+			lineChart(d.values,this)
+			});
+
+
+
 	})
 
+//drawing line chart based on serial x-y data
+//function "signature": what arguments are expected, how many, and what they should look like
+function lineChart(data,rootDOM){
+	//root DOM: where it started
+	console.log("lineChart");
+	console.log(data);
+	console.log(rootDOM);
+
+	data.pop()
+
+	const W =rootDOM.clientWidth;
+	const H  = rootDOM.clientHeight;
+	const margin = {t:32, r:32, b:128, l:64};
+	const innerWidth = W - margin.l -margin.r;
+	const innerHeight = H- margin.t - margin.b;
+
+	const scaleX = d3.scaleLinear()
+					.domain([1995,2020])
+					.range([0,innerWidth]);
+
+	const scaleY = d3.scaleLinear()
+					.domain([0,25000000])
+					.range([innerHeight,0])
+
+
+	//take array of xy values, and produce a shape attribute for <path> element
+	const lineGenerator = d3.line()
+		.x(d => scaleX(+d.key))
+		.y(d => scaleY(d.value));// this is a function
+
+	const areaGenerator = d3.area()
+	.x(d => scaleX(+d.key))
+	.y0(innerHeight)
+	.y1(d => scaleY(d.value))
+
+	const axisX = d3.axisBottom()
+		.scale(scaleX)
+		//.tickFormat(function(value){ return "'" + string(value).slice(-2)});
+
+	const axisY = d3.axisLeft()
+	.scale(scaleY)
+	.tickSize(-innerWidth)
+	.ticks(5);
+
+		console.log(lineGenerator(data));
+	const svg = d3.select(rootDOM)
+	.append("svg")
+	.attr("width", W)
+	.attr("height", H);
+
+	const plot = svg.append("g")
+	.attr("class","plot")
+	.attr("transform",`translate(${margin.l},${margin.t})`)//from edge to transform from top and left
+								//string template 
+
+	plot.append("path")
+	.attr("class","line")
+	.datum(data)
+	//visual attribute shape i.e. geometry "d"
+	//d is a description attr
+	.attr("d",data => lineGenerator(data))
+	//if lineGenerator(undefined), return length not read
+	.style("fill","none")
+	.style("stroke", "#333")
+	.style("stroke-width","2px")
+
+	plot.append("path")
+	.attr("class","area")
+	.datum(data)
+	.attr("d",data =>areaGenerator(data))
+	.style("fill-opacity",0.03)
+
+//why append g??
+	plot.append("g")
+	.attr("class","axis axis-x")
+	.attr("transform", `translate(0, ${innerHeight})`)
+	.call(axisX)
+
+	plot.append("g")
+	.attr("class","axis axis-y")
+	.call(axisY)
+	
+}
 
 //Utility functions for parsing metadata, migration data, and country code
 function parseMetadata(d){
@@ -109,3 +243,4 @@ function parseMigrationData(d){
 
 	return migrationFlows;
 }
+
