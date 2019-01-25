@@ -47,6 +47,13 @@ Promise.all([
 		
 		console.log(migrationAugmented);
 
+		const migrationBySubregion = d3.nest()
+		.key(d => d.origin_subregion)
+		.rollup(values => d3.sum(values, d => d.value))
+		.entries(migrationAugmented)
+
+		console.log(migrationBySubregion);
+
 	})
 
 
