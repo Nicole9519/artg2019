@@ -120,15 +120,15 @@ function lineChart(data,rootDOM){
 	const W =rootDOM.clientWidth;
 	const H  = rootDOM.clientHeight;
 	const margin = {t:32, r:32, b:128, l:64};
-	const innerWidth = W - margin.l -margin.r;
-	const innerHeight = H- margin.t - margin.b;
+	const innerWidth = W - margin.l - margin.r;
+	const innerHeight = H - margin.t - margin.b;
 
 	const scaleX = d3.scaleLinear()
-					.domain([1995,2020])
+					.domain([1985,2020])
 					.range([0,innerWidth]);
-
+  
 	const scaleY = d3.scaleLinear()
-					.domain([0,25000000])
+					.domain([0,20000000])
 					.range([innerHeight,0])
 
 
@@ -151,7 +151,7 @@ function lineChart(data,rootDOM){
 	.tickSize(-innerWidth)
 	.ticks(5);
 
-		console.log(lineGenerator(data));
+		//console.log(lineGenerator(data));
 	const svg = d3.select(rootDOM)
 	.append("svg")
 	.attr("width", W)
@@ -159,9 +159,8 @@ function lineChart(data,rootDOM){
 
 	const plot = svg.append("g")
 	.attr("class","plot")
-	.attr("transform",`translate(${margin.l},${margin.t})`)//from edge to transform from top and left
+	.attr("transform", `translate(${margin.l}, ${margin.t})`)//from edge to transform from top and left
 								//string template 
-
 	plot.append("path")
 	.attr("class","line")
 	.datum(data)
