@@ -84,12 +84,9 @@ Promise.all([
 	const subregionsData = d3.nest()
 	.key(d => d.dest_subregion)
 	.key(d => d.year)
-	.rollup(values => d3.sum(values, d => d.value))//values: second values
+	.rollup(values => d3.sum(values, d => d.value))//values: second values // better to use rollup
 	.entries(migrationAugmented)
-	// .map(d => {
-	// 	return { key: d.key,// how to distinguish the two key?
-	// 			 total: d3.sum(d.values.values, d => d.value)}
-	// })
+	
 
 	console.log(subregionsData)
 
