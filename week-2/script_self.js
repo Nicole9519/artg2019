@@ -61,7 +61,7 @@ Promise.all([migrationPromise,countryCodePromise,metadataPromise])
 			// console.groupEnd();
 
 			linechart(d.values,this)
-			});
+			}); //?怎么简写
 
 	});
 
@@ -84,7 +84,7 @@ function linechart(data, rootDOM){
 	const xAxis = d3.axisBottom().scale(xScale);
 	const yAxis = d3.axisLeft().scale(yScale)
 					.tickSize(-innerWidth)
-					.ticks(5);
+					.ticks(5,"s");
 
 	const lineGenerator = d3.line()
 							.x(d => xScale(+d.key))
@@ -93,15 +93,17 @@ function linechart(data, rootDOM){
 	const areaGenerator = d3.area()
 							.x(d => xScale(+d.key))
 							.y0(innerHeight)
-							.y(d => yScale(d.value));
+							.y1(d => yScale(d.value));
 
+	
 	const svg = d3.select(rootDOM)
 				.append("svg")
-				.attr("width", innerWidth)
-				.attr("height", innerHeight);
+				.attr("width", W)
+				.attr("height", H);
 
 	const plot = svg.append("g")
 					.attr("class","plot")
+					.attr("transform", `translate(${margin.l}, ${margin.t})`)
 					//.attr("transform", `translate()`)
 
 	plot.append("path")
@@ -114,10 +116,10 @@ function linechart(data, rootDOM){
 
 
 	plot.append("path")
-	.attr("class","area")
-	.datum(data)
-	.attr("d", data => areaGenerator(data))
-	.style("fill-opacity",0.03)
+		.attr("class","area")
+		.datum(data)
+		.attr("d", data => areaGenerator(data))
+		.style("fill-opacity",0.03);
 
 	plot.append("g")
 	.attr("class","axis axis-x")
