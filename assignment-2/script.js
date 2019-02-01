@@ -31,7 +31,7 @@ Promise.all([
 			.key(d => d.origin_name)
 			.entries(migration_2000)
 			.map(function(d){ return {
-				key:d.key,
+				key: d.key,
 				total:  d3.sum(d.values, a => a.value)
 			}}) 
 			
@@ -57,8 +57,8 @@ Promise.all([
 
 		//REPRESENT
 		drawCartogram(d3.select('.cartogram').node(), migration_origin_by_country);
-
-	})
+						//take the div "cartogram" 
+	})//Returns the total number of elements in this selection.
 
 //YOUR CODE HERE
 //Complete the drawCartogram function
@@ -94,13 +94,15 @@ function drawCartogram(rootDom, data){
 	const plot = d3.select(rootDom)
 		.append('svg')
 		.attr('width', w)
-		.attr('height', h)
-		.append('g');
+		.attr('height', h)//set width to svg'
+		.append('g'); // plot is refering to g 
 //>???
-	const nodes = plot.selectAll('.node')
-		.data(data, d => d.key);
-	const nodesEnter = nodes.enter().append('g')
+	const nodes = plot.selectAll('.node') // selection = 0 
+		.data(data, d => d.key); // 234  mismatch
+	
+	const nodesEnter = nodes.enter().append('g') //append g *234
 		.attr('class', 'node');
+
 	nodesEnter.append('circle');
 	nodesEnter.append('text').attr('text-anchor', 'middle');
 
@@ -119,6 +121,7 @@ function drawCartogram(rootDom, data){
 		.style('stroke-opacity', .2)
 	nodes.merge(nodesEnter)
 		.select('text')
+		//.attr("y", d => -scaleSize(d.total))
 		.filter(d => d.total > 1000000)
 		.text(d => d.name_display)
 		.style('font-family', 'sans-serif')

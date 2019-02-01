@@ -1,4 +1,4 @@
-html,body{
+/*html,body{
 	margin: 0;
 	padding: 0;
 
@@ -23,4 +23,34 @@ html,body{
 	margin: 20px;
 
 
+}*/
+
+html,body,div,h1,h2,h3,p,a,ul,li{
+	margin:0;
+	padding:0;
+	list-style: none;
+}
+
+html,body{
+	width:100%;
+}
+
+.module{
+	float:left;
+	position: relative;
+}
+	.module .label{
+		position: absolute;
+		top: 16px;
+		left: 48px;
+	}
+
+.axis .domain{
+	display:none;
+}
+.axis line{
+	stroke-opacity:0.2;
+}
+.axis text{
+	fill: #333;
 }

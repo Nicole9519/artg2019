@@ -85,7 +85,13 @@ Promise.all([
 	.key(d => d.dest_subregion)
 	.key(d => d.year)
 	.rollup(values => d3.sum(values, d => d.value))//values: second values
-	.entries(migrationAugmented);
+	.entries(migrationAugmented)
+	// .map(d => {
+	// 	return { key: d.key,// how to distinguish the two key?
+	// 			 total: d3.sum(d.values.values, d => d.value)}
+	// })
+
+	console.log(subregionsData)
 
 	d3.select(".main")
 		.selectAll("chart")//0
