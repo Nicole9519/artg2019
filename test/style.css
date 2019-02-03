@@ -1,4 +1,4 @@
-/* scatterplot
+/*SCATTERPLOT
 body {
   font: 10px sans-serif;
 }
@@ -13,10 +13,11 @@ body {
 .dot {
   stroke: #000;
 }
+
 */
 
 
-/*matric*/
+/*matric
 
 svg {
   font: 10px sans-serif;
@@ -60,3 +61,6 @@ circle.hidden {
   fill-opacity: .125;
   stroke: #fff;
 }
+
+*/
+
