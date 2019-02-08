@@ -12,8 +12,8 @@ Promise.all([dataPromise,geojsonFeature])
 
 function drawMap(rootDOM,data, geoJSON){
 
-	const W = 690;
-	const H = 690;
+	const W = 1000;
+	const H = 1000;
 	const m = {t:32,r:32,b:32,l:32};
 
 
@@ -21,7 +21,7 @@ function drawMap(rootDOM,data, geoJSON){
 	const projection = d3.geoMercator()
 		.center([42.349220, -71.061432])
 		.translate([W/2, H/2])
-		.scale(90000);
+		.scale(50000);
 
 	const path = d3.geoPath()
   		.projection(projection)
