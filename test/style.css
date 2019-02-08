@@ -63,4 +63,23 @@ circle.hidden {
 }
 
 */
+html,body,div{
+  margin:0;
+  padding:0;
+}
 
+.main{
+  width:960px;
+  height: 960px;
+  margin:auto;
+}
+
+#mapid { 
+  height: 640px; 
+}
+
+.module{
+  height:960px;
+  width: 960px;
+  float: left;
+}

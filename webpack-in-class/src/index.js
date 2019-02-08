@@ -17,7 +17,7 @@ Promise.all([
 		metadataPromise
 	])
 	.then(([migration, countryCode, metadataMap]) => {
-
+		
 		const migrationAugmented = migration.map(d => {
 
 			const origin_code = countryCode.get(d.origin_name);
@@ -45,11 +45,11 @@ Promise.all([
 
 		//render the charts
 		render(data);
-	
 
+		//console.log(countryCode);
 	//Build UI for <select> menu
 		//console.log(countryCode)
-		const countryList = Array.from(countryCode.entries()) //
+		const countryList = Array.from(countryCode.entries()) //?
 		console.log(countryList);
 		const menu = d3.select(".nav")
 						.append("select"); // select menu
@@ -64,8 +64,10 @@ Promise.all([
 
 		//Build behavior for <select>menu
 		menu.on("change", function(){
-				// console.log(this.value)
-				// console.log(this.selectedIndex)// ?
+				
+				//console.log(this.value)
+				//console.log(this.selectedIndex)// ?
+				
 				const code = this.value;
 				const idx = this.selectedIndex;
 				const display = this.options[idx].innerHTML;
@@ -123,23 +125,6 @@ function render(data){
 			);
 		})
 
-// d3.select('.main')
-// 		.selectAll('.chart') //0 
-// 		.data(data)
-// 		.enter()// if not enter, not run below
-// 		.append('div')
-// 		.attr('class','chart')
-// 		.each(function(d){
-// 			// console.group()
-// 			// console.log(this);
-// 			// console.log(d);
-// 			// console.groupEnd();
-
-// 			lineChart(
-// 				d.values, //array of 7
-// 				this
-// 			);
-// 		})
 
 }
 
@@ -167,9 +152,5 @@ console.log("index.js")
 
 const var1 = 10;
 
-console.log(testFunction);
-console.log(var2);
-console.log(var1);
-console.log(d3);
 
 */

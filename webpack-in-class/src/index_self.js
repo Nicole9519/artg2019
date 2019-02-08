@@ -35,6 +35,29 @@ Promise.all([ migrationDataPromise, countryCodePromise, metadataPromise])
 
 		render(data);
 
+		const countryList = Array.from(countryCode.entries())
+		const menu = d3.select(".nav")
+						.append("select")
+				
+		menu.selectAll("option")
+				.data(countryList)
+				.enter()
+				.append("option")
+				.attr("value", d => d[1])
+				.html(d => d[0]);
+
+		menu.on("change", function(){
+			const code = this.value;
+			const idx = this.selectedIndex;
+			const display = this.options[idx].innerHTML;
+
+			const data = transformData(code, migrationAugmented)
+			render(data)
+
+
+		})
+
+
 	})
 
 
