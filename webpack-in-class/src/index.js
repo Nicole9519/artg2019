@@ -82,12 +82,9 @@ function render(data){
 	//Find max value in data
 	const maxValue = max(data.map(subregion => max(subregion.values, d => d.value))) // [] * 18
 	
-	const  lineChart = LineChart(maxValue)
-	//const lineChart  = LineChart()
-	//	.maxY(maxValue);//?
-
-	// const someScale = d3.scaleLinear()
-	// 	.domain()
+	//const  lineChart = LineChart(maxValue) //To talk like d3, use the follow language
+	const lineChart  = LineChart()
+						.maxY(maxValue);
 
 
 	const charts = select('.chart-container')

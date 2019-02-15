@@ -1,14 +1,14 @@
 import * as d3 from 'd3';
 
-function LineChart(maxY){
+function LineChart(){
 
-
+		let maxY;
 
 	function exportFunction(data, rootDOM){
-		let maxY;
+		
 		//data
 		//[{}, {}, {}...]x7
-
+		
 		const W = rootDOM.clientWidth;
 		const H = rootDOM.clientHeight;
 		const margin = {t:32, r:32, b:64, l:64};

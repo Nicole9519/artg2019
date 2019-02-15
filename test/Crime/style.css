@@ -1,0 +1,91 @@
+/*SCATTERPLOT
+body {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.dot {
+  stroke: #000;
+}
+
+*/
+
+
+/*matric
+
+svg {
+  font: 10px sans-serif;
+  padding: 10px;
+}
+
+.axis,
+.frame {
+  shape-rendering: crispEdges;
+}
+
+.axis line {
+  stroke: #ddd;
+}
+
+.axis path {
+  display: none;
+}
+
+.cell text {
+  font-weight: bold;
+  text-transform: capitalize;
+  fill: black;
+}
+
+.frame {
+  fill: none;
+  stroke: #aaa;
+}
+
+circle {
+  fill-opacity: .7;
+}
+
+circle.hidden {
+  fill: #ccc !important;
+}
+
+.extent {
+  fill: #000;
+  fill-opacity: .125;
+  stroke: #fff;
+}
+
+*/
+html,body,div{
+  margin:0;
+  padding:0;
+}
+
+.main{
+  width:960px;
+  height: 960px;
+  margin:auto;
+}
+
+#mapid { 
+  height: 640px; 
+}
+
+.module{
+  height:100%;
+  width:100%;
+  float:left;
+}
+
+.chart{
+  width:400px;
+  height:400px;
+  float:left;
+}
