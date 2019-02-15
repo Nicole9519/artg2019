@@ -75,56 +75,50 @@ function updatePlot1(data){
 		.select('circle')
 		.style('fill','red');
 }
-//player
+
 function updatePlot2(data){
+
+	console.group('Update plot 2');
 	//YOUR CODE HERE
-	const nodes = plot2.selectAll(".node")//selection of size of 0
-						.data(data, d => d.name) //selection of size of deficit
-					//if 6 incoming, 5	
-					//d => d.name specify the circle
+	const nodes = plot2.selectAll('.node') //selection of size of 0
+		.data(data, d => d.name); //update selection
+
 	const nodesEnter = nodes.enter()
-						.append("g")
-						.attr("class","node") // if coming out this line, keep pasting
-						//1
-	const nodesExit = nodes.exit()
-	//	nodes == selection 
-	//  size: deficit 
-	
-	//update
-	nodes.select("circle")
-		.attr("fill","green");
-	
-	nodesExit.select("circle")
-		.attr("fill","red");
-	//new data
-	nodesEnter.select("circle")
-		.attr("fill","yellow")
+		.append('g')
+		.attr('class','node');
+
+	const nodesCombined = nodes.merge(nodesEnter);
+
+	const nodesExit = nodes.exit();
+
+	//nodes selection size?
+	nodes.select('circle')
+		.attr('fill', 'green');
+
+	nodesExit.select('circle')
+		.attr('fill', 'red');
+
+	nodesEnter
+		.append('circle')
+		.attr('fill','yellow');
+	nodes.merge(nodesEnter)
+		.select('circle')
+		.transition()
+		.attr('r', d => d.value)
+
+	nodesEnter
+		.append('text')
+		.attr('text-anchor', 'middle')
+	nodes.merge(nodesEnter)
+		.select('text')
+		.text(d => d.name)
+
+	nodes.merge(nodesEnter)
+		.transition()
+		.attr('transform', d => `translate(${d.x}, ${d.y})`);
 
 
 	console.groupEnd();
-
-	nodesEnter
-		.append("circle")
-		.attr("fill","yellow")
-
-	nodes.merge(nodesEnter) //g
-		.select("circle")// not g, but the circle
-		.transition()
-		.attr("r", d => d.value)
-
-	nodesEnter
-		.append("text")
-		.attr("text-anchor","middle")
-
-	nodes.merge(nodesEnter)
-		.select("text")
-		.text(d => d.name)
-
-	nodes.merge(nodesEnter) //position
-		.transition()
-		.attr("transform",d => `translate(${d.x},${d.y})`)
-
-
 
 }
 
