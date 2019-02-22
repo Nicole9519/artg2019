@@ -1,23 +1,23 @@
 const crimePromise = d3.csv("./crimeData.csv",parseData);
 //const jsonPromise = d3.json("./bostonNeighborhood.geojson");
 
+var mymap = L.map('mapid').setView([42.349220, -71.061432], 13);
+
+L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox.streets',
+    accessToken: 'pk.eyJ1IjoiaGFueWFuZ2RvbmciLCJhIjoiY2phMTdyNTFzM2I2eDJ2cG9kdnNvODk5cyJ9.uPuJ52uDwmZhmxTMVoZhXg'
+}).addTo(mymap);
+
 Promise.all([crimePromise])
 	.then(([crime])  => {
-		//console.log(crime);
-
-
-
+		
 		const data = transform("2015", crime);
 		
 		const year = [[1,2015],[2,2016],[3,2017],[4,2018]] 
-	
-		
-		
 
-	//console.log(data);
-
-		drawMap(d3.select('.module').node(), data)
-
+		render(data);
 		
 		//console.log(year);
 		const menu = d3.select(".nav")
@@ -36,9 +36,7 @@ Promise.all([crimePromise])
 
 			const data = transform(year,crime);
 			
-			drawMap(d3.select(".module").node(), data)
-			
-
+			render(data)
 
 		 })
 
@@ -72,7 +70,7 @@ function drawMap(rootDOM,data){
 		.selectAll("svg")
 		.data([1]);
 		
-	const svgEnter = svg.append("svg");
+	const svgEnter = svg.enter().append("svg");
 					
 	svg.merge(svgEnter)
 		.attr('width', W)
@@ -100,8 +98,8 @@ function drawMap(rootDOM,data){
 		.style('stroke-opacity', .1);
 
 	
-	nodes.merge(nodesEnter)
-		.exit().remove()
+	nodes
+		.exit().remove();
 }
 
 
@@ -112,25 +110,14 @@ function transform(year, data){
 
 }
 
-// function render(data){
-// 	const chart = d3.select(".module")
-// 						.select(".chart") //0
-// 						.data(data);//many
+function render(data){
 
-// 	const chartEnter = chart.enter()
-// 					.append("div")
-// 					.attr("class","chart");
-
-// 	chart.exit().remove();
-
-// 	chart.merge(chartEnter)
-// 		.each(function(d){
-// 			drawMap(this, data)
-		
-// 		});
-
-// 	//drawMap(d3.select('.module').node(), data);
-// }
+d3.select(".module")
+	.each(function(d){
+		drawMap(this, data)
+	})
+	//drawMap(d3.select('.module').node(), data);
+}
 
 function parseData(d){
 	return {

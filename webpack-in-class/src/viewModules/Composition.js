@@ -39,18 +39,30 @@ export default function Composition(rootDOM, data){
 
 	//Build DOM
 	const svg = select(rootDOM)
-		.append('svg')
-		.attr('width', W)
-		.attr('height', H);
-	const plot = svg
-		.append('g')
-		.attr('transform', `translate(${margin.l}, ${margin.t})`);
-	const nodes = plot.selectAll('.node')
+		.classed("treemap", true)
+		.selectAll("svg")
+		.data([1]);
+
+	const svgEnter = svg
+		.enter()
+		.append("svg")
+	
+	svg.merge(svgEnter)
+		.attr('width', w)
+		.attr('height', h);
+
+	// const plotEnter = svgEnter
+	// 	.append('g')
+	// 	.attr('transform', `translate(${margin.l}, ${margin.t})`);
+	
+	const nodes = svgEnter.selectAll('.node')
 		.data(treemapData.descendants().filter(d => d.height < 2), d => d.data.key);
+	
 	const nodesEnter = nodes.enter()
 		.append('g').attr('class','node');
 	nodesEnter.append('rect');
 	nodesEnter.append('text');
+
 	const nodesCombined = nodes.merge(nodesEnter);
 	nodesCombined
 		.attr('transform', d => `translate(${d.x0}, ${d.y0})`)
@@ -65,4 +77,7 @@ export default function Composition(rootDOM, data){
 		.style('fill','none')
 		.style('stroke','#ccc')
 		.style('stroke-width','1px')
+
+	nodes.exit().remove()
+	
 }

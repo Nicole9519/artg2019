@@ -1,0 +1,45 @@
+<head>
+<title>Boston Violent Crime Map</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="http://d3js.org/topojson.v1.min.js"></script>
+<script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
+<script src="L.Control.Button.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<link href="./global.css" rel="stylesheet"/>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://unpkg.com/leaflet-pip@latest/leaflet-pip.js"></script>
+<script src="crimerate.js"></script>
+
+</head>
+
+<body>
+  <select id="dropdown">  </select>
+<div id="map"></div>
+<div class="leaflet-top leaflet-right" id="infoBoston">If you are in Boston:</div>
+<div id="note" class="leaflet-top leaflet-right">
+  <hr>
+  <h5>Note:</h5><br />
+  Violent crime (murder, aggravated assault) and property crime ( auto theft, burglary, larceny and arson), between Jan. 1, 2016 to Dec. 31, 2016.
+  <br/><br/>
+  This map is largely inspired by Jieqian Zhang's project <a target='_blank' class="white-link" href="https://jieqianzhang.github.io/sf_car_breakins_live/">How safe it is to park</a>
+  <br/><br/>
+  <b>Source:</b> Boston Police Department
+</div>
+<button id="helpbutton" role="button" class="btn">Find Crime Cases near you</button>
+<div class="leaflet-top leaflet-right" id="infoOutside">If you are not in Boston:</div>
+<button id="buttonExpl" role="button" class="btn" >Explore the Crime Cases</button>
+<script>
+
+
+</script>
+
+</body>

@@ -1,6 +1,6 @@
 import './style.css';
 import 'bootstrap/dist/css/bootstrap.css';
-import {select, max} from 'd3';
+import {select, max, dispatch} from 'd3';
 
 import {
 	migrationDataPromise,
@@ -14,6 +14,22 @@ import {
 //View modules
 import Composition from './viewModules/Composition';
 import LineChart from './viewModules/LineChart';
+
+const globeDispatch = dispatch("change:country");
+
+
+//Build UI for countryTitle component
+const title = select('.country-view')
+	.insert('h1', '.composition-container')
+	.html('World');
+
+globeDispatch.on("change:country", (code,displayName, migrationData) => {
+
+	title.html(displayName);
+	renderLineCharts(groupBySubregionByYear(code, migrationData));
+	renderComposition(migrationData.filter(d => d.origin_code === code )); //enter 
+});
+
 
 Promise.all([
 		migrationDataPromise,
@@ -45,8 +61,10 @@ Promise.all([
 	});
 	
 	//Render the view modules
-	renderLineCharts(groupBySubregionByYear("840", migrationAugmented));
-	renderComposition(migrationAugmented.filter(d => d.origin_code === "840"));
+
+	globeDispatch.call("change:country", null, "840", "World", migrationAugmented)
+	//renderLineCharts(groupBySubregionByYear("840", migrationAugmented));
+	//renderComposition(migrationAugmented.filter(d => d.origin_code === "840"));
 
 
 	//Build UI for <select> menu
@@ -61,10 +79,6 @@ Promise.all([
 		.attr('value', d => d[1])
 		.html(d => d[0]);
 
-	//Build UI for countryTitle component
-	const title = select('.country-view')
-		.insert('h1', '.composition-container')
-		.html('World');
 
 	//Define behavior for <select> menu
 	menu.on('change', function(){
@@ -72,9 +86,10 @@ Promise.all([
 		const idx = this.selectedIndex;
 		const display = this.options[idx].innerHTML;
 		
+		globeDispatch.call("change:country", null, code, display, migrationAugmented);
+
 		//Update other components
-		title.html(display);
-		renderLineCharts(groupBySubregionByYear(code, migrationAugmented));
+		//broadcasting before: renderLineCharts(groupBySubregionByYear(code, migrationAugmented));
 	});
 
 });
@@ -104,7 +119,7 @@ function renderLineCharts(data){
 		});
 }
 
-function renderComposition(data){
+function renderComposition(data){ //only one svg
 
 	select('.composition-container')
 		.each(function(){
