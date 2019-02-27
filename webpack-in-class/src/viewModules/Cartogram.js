@@ -2,7 +2,9 @@ import {nest, select, geoMercator, max, scaleSqrt,
 	forceSimulation, 
 	forceX, 
 	forceY, 
-	forceCollide
+	forceCollide,
+	scaleLinear,
+	extent
 } from 'd3';
 
 //API reference for force layout
@@ -21,6 +23,9 @@ export default function Cartogram(){
 		const w = W - margin.l - margin.r;
 		const h = H - margin.t - margin.b;
 		const scaleSize = scaleSqrt().range([3,100]);
+
+		const dataExtent = extent(data, d=> d.value);
+		const colorScale = scaleLinear().domain(dataExtent).range(["#bfd2ef", "#2a6fd6"]);
 
 		//Data restructuring
 		let dataMap = nest()
@@ -75,7 +80,7 @@ export default function Cartogram(){
 		nodesEnter.append('circle')
 			.attr('stroke','#333')
 			.attr('stroke-width','1px')
-			.attr('fill-opacity',.1);
+			.attr('fill-opacity',1);
 		nodesEnter.append('text')
 			.attr('text-anchor','middle');
 		const nodesCombined = nodes.merge(nodesEnter);
@@ -85,16 +90,17 @@ export default function Cartogram(){
 		nodesCombined
 			.select('circle')
 			.transition()
-			.attr('r', d => scaleSize(d.value));
+			.attr('r', 20)
+			.attr("fill", d => colorScale(d.value));//d => scaleSize(d.value)
 		nodesCombined
 			.select('text')
 			.filter(d => scaleSize(d.value)>30)
 			.text(d => d.dest_name);
 
 		//Force layout
-		const force_X = forceX().x(d => d.x);// similar to our own module
-		const force_Y = forceY().y(d => d.y);
-		const force_collide = forceCollide(d => scaleSize(d.value));
+		const force_X = forceX().x(d => W/2);// similar to our own module
+		const force_Y = forceY().y(d => H/2);
+		const force_collide = forceCollide(20);
 
 		const simulation = forceSimulation()
 			.force("x",force_X)
