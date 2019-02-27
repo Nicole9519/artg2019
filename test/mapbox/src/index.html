@@ -1,0 +1,74 @@
+<html>
+<head>
+  <title>A Leaflet map!</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+   integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+   crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+   integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+   crossorigin=""></script>
+  <script src="./jquery-3.3.1.js"></script> 
+
+  <style>
+    #map{ height: 100% }
+  </style>
+</head>
+
+<body>
+
+  <div id="map"></div>
+  
+  <script> 
+
+    var map = L.map('map').setView([42.35, -71.08], 13);
+
+  // load a tile layer
+  L.tileLayer('http://tiles.mapc.org/basemap/{z}/{x}/{y}.png',
+    {
+      attribution: 'Tiles by <a href="http://mapc.org">MAPC</a>, Data by <a href="http://mass.gov/mgis">MassGIS</a>',
+      maxZoom: 17,
+      minZoom: 9
+    }).addTo(map);
+
+// bike lanes
+  L.tileLayer('http://tiles.mapc.org/trailmap-onroad/{z}/{x}/{y}.png',
+  {
+    maxZoom: 17,
+    minZoom: 9
+  }).addTo(map); 
+  
+  $.getJSON("bostonNeighborhood.geojson",function(hoodData){
+  var hoodMap = L.geoJson( hoodData ).addTo(map);
+}); 
+
+  // load GeoJSON from an external file
+  $.getJSON("rodents.geojson",function(data){
+   var geojsonMarkerOptions = {
+    color: '#f03',
+    fillColor: '#f03',
+    fillOpacity: 0.5,
+    radius: 100
+};
+   var rodentsMap = L.geoJson(data  ,{
+     pointToLayer: function(feature,latlng){
+      //var ratIcon = L.icon({
+      //   iconUrl: 'rat.gif',
+      //   iconSize: [50,40]
+      // });  add icon,marker..any kind of 
+    var marker = L.circle(latlng,geojsonMarkerOptions);
+  marker.bindPopup(feature.properties.location_street_name + '<br/>' + feature.properties.open_dt);
+  return marker; 
+}
+  }).addTo(map)
+
+    // var clusters = L.markerClusterGroup();
+    // clusters.addLayer(rodents);
+    // map.addLayer(clusters); 
+
+});
+
+
+</script>
+</body>
+</html>
+	

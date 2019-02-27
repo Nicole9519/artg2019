@@ -9,10 +9,21 @@ const crimePromise = d3.csv("./crimeData.csv",parseData);
 //     id: 'mapbox.streets',
 //     accessToken: 'pk.eyJ1IjoiaGFueWFuZ2RvbmciLCJhIjoiY2phMTdyNTFzM2I2eDJ2cG9kdnNvODk5cyJ9.uPuJ52uDwmZhmxTMVoZhXg'
 // }).addTo(mymap);
+const title1 = d3.select('.country-view1')
+	.insert('h3', '.cartogram-container')
+	.html('Aggravated Assault');
+
+const title2 = d3.select('.country-view2')
+	.insert('h3', '.cartogram-container')
+	.html('Homicide');
+
+const title3 = d3.select('.country-view3')
+	.insert('h3', '.cartogram-container')
+	.html('Criminal Harassment');
 
 Promise.all([crimePromise])
 	.then(([crime])  => {
-		
+
 		const data = transform("2015", crime);
 		
 		const year = [[1,2015],[2,2016],[3,2017],[4,2018]] 
@@ -59,10 +70,15 @@ function drawMap(rootDOM,data){
 	])
 		.domain(["Aggravated Assault","Homicide","Criminal Harassment"])
 
+	const lngLatBOS = [-71.057083,42.361145];
+
 	const projection = d3.geoMercator()
-		.center([ -71.061432,42.349220])
-		.translate([W/2, H/2])
-		.scale(80000);
+		.center(lngLatBOS)
+		.translate([W/2, H/6])
+		.scale(120000);
+
+	const path = d3.geoPath()
+  		.projection(projection)
 
 	const scaleColor = d3.scaleOrdinal().range([
 		'#C5C6B6', //red
@@ -116,17 +132,35 @@ function drawMap(rootDOM,data){
 function transform(year, data){
 	const filterData = data.filter(d => d.year === year );
 
-	return filterData;
+	const data_tem = d3.nest()
+					.key(d => d.kind)
+					.entries(filterData);
+
+	return data_tem;
 
 }
 
 function render(data){
+	const charts = d3.select('.module')
+		.selectAll('.chart')
+		.data(data, d => d.key);
+	const chartsEnter = charts.enter()
+		.append('div')
+		.attr('class','chart')
+	charts.exit().remove();
 
-d3.select(".module")
-	.each(function(d){
-		drawMap(this, data)
-	})
-	//drawMap(d3.select('.module').node(), data);
+	charts.merge(chartsEnter)
+		.each(function(d){
+			drawMap(
+				this,
+				d.values
+			);
+		});
+// d3.select(".module")
+// 	.each(function(d){
+// 		drawMap(this, data)
+// 	})
+// 	//drawMap(d3.select('.module').node(), data);
 }
 
 function parseData(d){
