@@ -58,7 +58,7 @@ function drawMap(rootDOM,data, geoJSON){
 		.enter()
 		.append("circle")
 		.attr("class","node")
-		.attr("r",20)
+		.attr("r",4)
 		.attr('transform', d => {
 			const xy = projection(d.lngLat);
 			return `translate(${xy[0]}, ${xy[1]})`;

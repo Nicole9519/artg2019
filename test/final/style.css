@@ -1,0 +1,35 @@
+
+html,body,div{
+  margin:0;
+  padding:0;
+}
+
+.main{
+  width:1500px;
+  height: 1500px;
+  margin:auto;
+}
+
+.module{
+  height:100%;
+  width:100%;
+  float:left;
+}
+
+
+
+
+#tooltip{    
+  position: absolute;
+  left: 70%;
+  top: 30%;
+  width: 230px;
+  height: 400px;
+  font-family:Optima,Sans-serif;
+  font-size: 15px;
+  background-color:white;
+  color:black;
+  text-align: left;
+  stroke-width: 3px;   
+}
+
