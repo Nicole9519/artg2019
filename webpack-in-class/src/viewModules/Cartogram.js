@@ -34,6 +34,7 @@ export default function Cartogram(){
 			.map(d => [+d.key, d.values]);
 		dataMap = new Map(dataMap);
 		let dataByYear = dataMap.get(year);
+
 		//Discover max value to set the size of circles
 		const maxValue = max(dataByYear, d => d.value);
 		scaleSize.domain([0, maxValue]);
@@ -50,7 +51,7 @@ export default function Cartogram(){
 			d.y = xy[1];
 			return d;
 		});
-
+		console.log(dataMap)
 		console.log(dataByYear);
 
 		//Append DOM elements

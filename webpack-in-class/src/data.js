@@ -11,7 +11,7 @@ const migrationDataPromise = csv('./data/un-migration/Table 1-Table 1.csv', pars
 
 const countryCodePromise = csv('./data/un-migration/ANNEX-Table 1.csv', parseCountryCode)
 	.then(data => new Map(data));
-
+console.log(countryCodePromise)
 const metadataPromise = csv('./data/country-metadata.csv', parseMetadata)
 	.then(metadata => {
 		//Convert metadata to a map

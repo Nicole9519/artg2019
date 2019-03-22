@@ -1,13 +1,43 @@
 const dataPromise = d3.csv("./2011.csv", parseData);
+const districtPromise = d3.csv("./district.csv", parseDistrictData)
 
-Promise.all([dataPromise])
-	.then(([data]) => {
+Promise.all([dataPromise,districtPromise])
+	.then(([housing, district]) => {
 
-	console.log(data)
-	
-	drawMap(d3.select(".module").node(),data)
+		const housing_tem = d3.nest()
+					.key(d => d.district)
+					.entries(housing);
+
+					//console.log(housing_tem)
+
+		const data = transform("08", housing);
+		console.log(district)
+		console.log(housing)
+		render(data);
+		//add some text later
+		const menu = d3.select(".nav")
+						.append("select");
+
+		menu.selectAll("option")
+			.data(district)
+			.enter()
+			.append("option")
+			.attr("value", d => d.code)
+			.html(d=> d.name);
+
+		menu.on("change", function(){
+
+			const year = this.value;
+
+			const data = transform(year,housing);
+			
+			render(data)
+
+		 })
 
 	})
+
+
 
 function drawMap(rootDOM,data){
 
@@ -27,38 +57,42 @@ function drawMap(rootDOM,data){
 
 	const projection = d3.geoMercator()
 		.center(lngLatBNG)
-		.translate([W/2, H/2])
-		.scale(60000);
+		.translate([W/4, H/4])
+		.scale(40000);
 
 	// const path = d3.geoPath()
  //  		.projection(projection)
 
-	const plot = d3.select(rootDOM)
-					.append("svg")
-					.attr("class","plot")
+	const svg = d3.select(rootDOM)
+					.classed("map", true)
+					.selectAll("svg")
+					.data([1])
+
+	const svgEnter = svg.enter().append("svg");
+
+	svg.merge(svgEnter)
 					.attr("width", W)
 					.attr("height", H);
 					
 
-	 // plot.selectAll("path")
-	 //    .data(geoJSON.features)
-	 //  	.enter()
-	 //  	.append("path")
-	 //    .attr("d", path)
-	 //    .attr("fill", "#ccc")
-	 //    .attr("stroke","#fff")
+	const nodes = svg.merge(svgEnter).selectAll(".node")
+		.data(data);
 
-	const nodes = plot.selectAll(".node")
-		.data(data)
+	const nodesEnter = nodes
 		.enter()
-		.append("circle")
-		.attr("class","node")
-		.attr("r",4)
+		.append("g")
+		.attr("class","node");
+
+	nodesEnter.append("circle");
+
+	nodes.merge(nodesEnter)
+		.select("circle")
+		.attr("r",3)
 		.attr('transform', d => {
 			const xy = projection(d.lngLat);
 			return `translate(${xy[0]}, ${xy[1]})`;
 		})
-		.style("fill-opacity",0.2)
+		.style("fill-opacity",0.5)
 		.style("fill", d => colorScale(d.price))
 		// .style("fill", d => {
 		// 	const district1 = data.filter(d=> d.district === 8);
@@ -92,6 +126,26 @@ function drawMap(rootDOM,data){
 		// 		      .attr("opacity",0.75);
 		// });
 
+		nodes.exit().remove()
+}
+
+
+function transform(district, data){
+	const filterData = data.filter(d => d.district === district );
+
+	return filterData;
+
+}
+
+function render(data){
+
+	d3.select('.module')
+		.each(function(){
+			drawMap(
+				this,
+				data
+			);
+		});
 }
 
 
@@ -100,6 +154,15 @@ function parseData(d){
 	return {
 		lngLat: [+d.Lng,+d.Lat],
 		price: d.price,
-		district: d.district
+		district: d.district.padStart(2,"0")
+	}
+}
+
+function parseDistrictData(d){
+	return {
+		 name: d["Name"],
+		 code: d["Division code[1]"].slice(-2),
+		 area: d["Area (km_)"],
+		 population: d["Population (2017_"]
 	}
 }

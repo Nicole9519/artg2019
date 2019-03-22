@@ -1,0 +1,842 @@
+[
+  {
+    "website": "nytimes.com",
+    "user_name": "Catherine Rampell",
+    "user_id": 14348157,
+    "link_share": 67
+  },
+  {
+    "website": "cnn.com",
+    "user_name": "Catherine Rampell",
+    "user_id": 14348157,
+    "link_share": 25
+  },
+  {
+    "website": "nytimes.com",
+    "user_name": "Tim Paluch",
+    "user_id": 14425050,
+    "link_share": 46
+  },
+  {
+    "website": "nytimes.com",
+    "user_name": "Eli Yokley",
+    "user_id": 17827531,
+    "link_share": 73
+  },
+  {
+    "website": "facebook.com",
+    "user_name": "Lioness Julia",
+    "user_id": 18119582,
+    "link_share": 18
+  },
+  {
+    "website": "foxnews.com",
+    "user_name": "Lioness Julia",
+    "user_id": 18119582,
+    "link_share": 8
+  },
+  {
+    "website": "Fake News",
+    "user_name": "Dawn Wildman",
+    "user_id": 19665440,
+    "link_share": 45
+  },
+  {
+    "website": "breitbart.com",
+    "user_name": "Dawn Wildman",
+    "user_id": 19665440,
+    "link_share": 34
+  },
+  {
+    "website": "foxnews.com",
+    "user_name": "Dawn Wildman",
+    "user_id": 19665440,
+    "link_share": 11
+  },
+  {
+    "website": "facebook.com",
+    "user_name": "dominique Higa",
+    "user_id": 20604226,
+    "link_share": 18
+  },
+  {
+    "website": "Fake News",
+    "user_name": "P. Blackshear",
+    "user_id": 21423086,
+    "link_share": 56
+  },
+  {
+    "website": "breitbart.com",
+    "user_name": "Mz. J.",
+    "user_id": 21423086,
+    "link_share": 44
+  },
+  {
+    "website": "youtube.com",
+    "user_name": "Donna4Donald",
+    "user_id": 21423086,
+    "link_share": 38
+  },
+  {
+    "website": "foxnews.com",
+    "user_name": "Kurt Puterbaugh",
+    "user_id": 21423086,
+    "link_share": 15
+  },
+  {
+    "website": "nytimes.com",
+    "user_name": "Felicia Curtin",
+    "user_id": 21662328,
+    "link_share": 40
+  },
+  {
+    "website": "facebook.com",
+    "user_name": "Linda  Sylvain",
+    "user_id": 22373561,
+    "link_share": 29
+  },
+  {
+    "website": "foxnews.com",
+    "user_name": "Raymond Trippy",
+    "user_id": 22463719,
+    "link_share": 20
+  },
+  {
+    "website": "Fake News",
+    "user_name": "Dempsey Coleman",
+    "user_id": 22626807,
+    "link_share": 146
+  },
+  {
+    "website": "youtube.com",
+    "user_name": "Alia Abu-Bakr",
+    "user_id": 22626807,
+    "link_share": 70
+  },
+  {
+    "website": "breitbart.com",
+    "user_name": "Larry Kutcher",
+    "user_id": 22626807,
+    "link_share": 28
+  },
+  {
+    "website": "cnn.com",
+    "user_name": "Sanel Babic",
+    "user_id": 23898335,
+    "link_share": 30
+  },
+  {
+    "website": "facebook.com",
+    "user_name": "Deplorable DrNeo",
+    "user_id": 26637474,
+    "link_share": 154
+  },
+  {
+    "website": "Fake News",
+    "user_name": "Mz. J.",
+    "user_id": 26829448,
+    "link_share": 50
+  },
+  {
+    "website": "nytimes.com",
+    "user_name": "Mary Zimnik",
+    "user_id": 27566537,
+    "link_share": 107
+  },
+  {
+    "website": "Fake News",
+    "user_name": "Merienne Lynch",
+    "user_id": 27566537,
+    "link_share": 102
+  },
+  {
+    "website": "cnn.com",
+    "user_name": "phyllis boling",
+    "user_id": 27566537,
+    "link_share": 42
+  },
+  {
+    "website": "Fake News",
+    "user_name": "Raymond Trippy",
+    "user_id": 28399177,
+    "link_share": 181
+  },
+  {
+    "website": "youtube.com",
+    "user_name": "Larry Kutcher",
+    "user_id": 28399177,
+    "link_share": 41
+  },
+  {
+    "website": "nytimes.com",
+    "user_name": "Edward Pisarski",
+    "user_id": 28774145,
+    "link_share": 44
+  },
+  {
+    "website": "cnn.com",
+    "user_name": "Edward Pisarski",
+    "user_id": 28774145,
+    "link_share": 26
+  },
+  {
+    "website": "cnn.com",
+    "user_name": "Maria Resinski",
+    "user_id": 29607690,
+    "link_share": 23
+  },
+  {
+    "website": "cnn.com",
+    "user_name": "Deplorable jill",
+    "user_id": 32443514,
+    "link_share": 32
+  },
+  {
+    "website": "nytimes.com",
+    "user_name": "Christi J. Dickel",
+    "user_id": 32454083,
+    "link_share": 76
+  },
+  {
+    "website": "nytimes.com",
+    "user_name": "StrongerTogether",
+    "user_id": 33235204,
+    "link_share": 62
+  },
+  {
+    "website": "cnn.com",
+    "user_name": "wossene bowler",
+    "user_id": 33504917,
+    "link_share": 21
+  },
+  {
+    "website": "facebook.com",
+    "user_name": "Linda  Sylvain",
+    "user_id": 36112656,
+    "link_share": 153
+  },
+  {
+    "website": "cnn.com",
+    "user_name": "Menda Euly",
+    "user_id": 39758722,
+    "link_share": 19
+  },
+  {
+    "website": "youtube.com",
+    "user_name": "wossene bowler",
+    "user_id": 40688260,
+    "link_share": 66
+  },
+  {
+    "website": "Fake News",
+    "user_name": "Kurt Puterbaugh",
+    "user_id": 40688260,
+    "link_share": 58
+  },
+  {
+    "website": "breitbart.com",
+    "user_name": "Catherine Rampell",
+    "user_id": 40688260,
+    "link_share": 26
+  },
+  {
+    "website": "facebook.com",
+    "user_name": "Clifford Klousia",
+    "user_id": 40688260,
+    "link_share": 21
+  },
+  {
+    "website": "nytimes.com",
+    "user_name": "Penny Temeles",
+    "user_id": 43736337,
+    "link_share": 107
+  },
+  {
+    "website": "youtube.com",
+    "user_name": "Mary Zimnik",
+    "user_id": 43736337,
+    "link_share": 66
+  },
+  {
+    "website": "Fake News",
+    "user_name": "Deplorable jill",
+    "user_id": 45123759,
+    "link_share": 156
+  },
+  {
+    "website": "breitbart.com",
+    "user_name": "Linda  Sylvain",
+    "user_id": 45123759,
+    "link_share": 70
+  },
+  {
+    "website": "youtube.com",
+    "user_name": "Dawn Wildman",
+    "user_id": 45123759,
+    "link_share": 46
+  },
+  {
+    "website": "facebook.com",
+    "user_name": "Deplorable DrNeo",
+    "user_id": 45123759,
+    "link_share": 27
+  },
+  {
+    "website": "foxnews.com",
+    "user_name": "Lonnie Crider",
+    "user_id": 45123759,
+    "link_share": 25
+  },
+  {
+    "website": "Fake News",
+    "user_name": "Felicia Curtin",
+    "user_id": 56215973,
+    "link_share": 146
+  },
+  {
+    "website": "foxnews.com",
+    "user_name": "Kurt Puterbaugh",
+    "user_id": 112282827,
+    "link_share": 432
+  },
+  {
+    "website": "breitbart.com",
+    "user_name": "Eli Yokley",
+    "user_id": 112282827,
+    "link_share": 74
+  },
+  {
+    "website": "Fake News",
+    "user_name": "Deplorable jill",
+    "user_id": 114872258,
+    "link_share": 248
+  },
+  {
+    "website": "youtube.com",
+    "user_name": "Clifford Glickman",
+    "user_id": 114872258,
+    "link_share": 113
+  },
+  {
+    "website": "breitbart.com",
+    "user_name": "Ralph Mattioli",
+    "user_id": 114872258,
+    "link_share": 106
+  },
+  {
+    "website": "foxnews.com",
+    "user_name": "P. Blackshear",
+    "user_id": 114872258,
+    "link_share": 78
+  },
+  {
+    "website": "facebook.com",
+    "user_name": "Kurt Puterbaugh",
+    "user_id": 114872258,
+    "link_share": 38
+  },
+  {
+    "website": "nytimes.com",
+    "user_name": "Jamiel Pridgen",
+    "user_id": 128892990,
+    "link_share": 112
+  },
+  {
+    "website": "Fake News",
+    "user_name": "Suzanne Stickelman__",
+    "user_id": 135940948,
+    "link_share": 137
+  },
+  {
+    "website": "facebook.com",
+    "user_name": "Mark Schwab-Bigelow",
+    "user_id": 135940948,
+    "link_share": 17
+  },
+  {
+    "website": "facebook.com",
+    "user_name": "Suzanne Stickelman__",
+    "user_id": 156829325,
+    "link_share": 24
+  },
+  {
+    "website": "foxnews.com",
+    "user_name": "Mitch Holliday",
+    "user_id": 157900878,
+    "link_share": 9
+  },
+  {
+    "website": "Fake News",
+    "user_name": "KRISTIE CHING",
+    "user_id": 187257145,
+    "link_share": 55
+  },
+  {
+    "website": "breitbart.com",
+    "user_name": "Ashley Boasso",
+    "user_id": 187257145,
+    "link_share": 31
+  },
+  {
+    "website": "facebook.com",
+    "user_name": "Deplorable DrNeo",
+    "user_id": 187551357,
+    "link_share": 72
+  },
+  {
+    "website": "nytimes.com",
+    "user_name": "Jerald Preston",
+    "user_id": 229079486,
+    "link_share": 141
+  },
+  {
+    "website": "facebook.com",
+    "user_name": "Dawn Wildman",
+    "user_id": 242099698,
+    "link_share": 53
+  },
+  {
+    "website": "cnn.com",
+    "user_name": "Dominique Higa",
+    "user_id": 247805429,
+    "link_share": 18
+  },
+  {
+    "website": "cnn.com",
+    "user_name": "Catherine Rampell",
+    "user_id": 253327861,
+    "link_share": 70
+  },
+  {
+    "website": "nytimes.com",
+    "user_name": "wossene bowler",
+    "user_id": 253327861,
+    "link_share": 59
+  },
+  {
+    "website": "nytimes.com",
+    "user_name": "Kurt Puterbaugh",
+    "user_id": 254616535,
+    "link_share": 45
+  },
+  {
+    "website": "Fake News",
+    "user_name": "Deplorable jill",
+    "user_id": 258240944,
+    "link_share": 487
+  },
+  {
+    "website": "breitbart.com",
+    "user_name": "Mz. J.",
+    "user_id": 258240944,
+    "link_share": 266
+  },
+  {
+    "website": "youtube.com",
+    "user_name": "phyllis boling",
+    "user_id": 258240944,
+    "link_share": 168
+  },
+  {
+    "website": "foxnews.com",
+    "user_name": "Geoffrey K. Olufemi",
+    "user_id": 258240944,
+    "link_share": 53
+  },
+  {
+    "website": "facebook.com",
+    "user_name": "Felicia Curtin",
+    "user_id": 258240944,
+    "link_share": 32
+  },
+  {
+    "website": "foxnews.com",
+    "user_name": "Lioness Julia",
+    "user_id": 270527635,
+    "link_share": 9
+  },
+  {
+    "website": "facebook.com",
+    "user_name": "Raymond Trippy",
+    "user_id": 271775853,
+    "link_share": 37
+  },
+  {
+    "website": "foxnews.com",
+    "user_name": "Lisa Sinkko _",
+    "user_id": 294243278,
+    "link_share": 17
+  },
+  {
+    "website": "Fake News",
+    "user_name": "Raymond Trippy",
+    "user_id": 296545454,
+    "link_share": 130
+  },
+  {
+    "website": "breitbart.com",
+    "user_name": "Wendy Mazaros",
+    "user_id": 296545454,
+    "link_share": 38
+  },
+  {
+    "website": "foxnews.com",
+    "user_name": "Archith Seshadri",
+    "user_id": 296545454,
+    "link_share": 24
+  },
+  {
+    "website": "cnn.com",
+    "user_name": "Merienne Lynch",
+    "user_id": 348554516,
+    "link_share": 19
+  },
+  {
+    "website": "breitbart.com",
+    "user_name": "Susan DeMark",
+    "user_id": 391774028,
+    "link_share": 40
+  },
+  {
+    "website": "youtube.com",
+    "user_name": "Larry Kutcher",
+    "user_id": 391774028,
+    "link_share": 37
+  },
+  {
+    "website": "foxnews.com",
+    "user_name": "Gideon",
+    "user_id": 391774028,
+    "link_share": 28
+  },
+  {
+    "website": "Fake News",
+    "user_name": "Mz. J.",
+    "user_id": 420678292,
+    "link_share": 184
+  },
+  {
+    "website": "breitbart.com",
+    "user_name": "Mary",
+    "user_id": 420678292,
+    "link_share": 105
+  },
+  {
+    "website": "youtube.com",
+    "user_name": "Michael P. Williams",
+    "user_id": 420678292,
+    "link_share": 86
+  },
+  {
+    "website": "foxnews.com",
+    "user_name": "Ralph Mattioli",
+    "user_id": 420678292,
+    "link_share": 23
+  },
+  {
+    "website": "breitbart.com",
+    "user_name": "Darice McGuire",
+    "user_id": 498959173,
+    "link_share": 17
+  },
+  {
+    "website": "foxnews.com",
+    "user_name": "Merienne Lynch",
+    "user_id": 533356713,
+    "link_share": 16
+  },
+  {
+    "website": "cnn.com",
+    "user_name": "Daria Salusbury",
+    "user_id": 544568261,
+    "link_share": 17
+  },
+  {
+    "website": "youtube.com",
+    "user_name": "alex kapetanakis",
+    "user_id": 606033804,
+    "link_share": 61
+  },
+  {
+    "website": "facebook.com",
+    "user_name": "Michael P. Williams",
+    "user_id": 606033804,
+    "link_share": 48
+  },
+  {
+    "website": "breitbart.com",
+    "user_name": "Dawn Wildman",
+    "user_id": 606033804,
+    "link_share": 14
+  },
+  {
+    "website": "Fake News",
+    "user_name": "CAROLYN ZORN",
+    "user_id": 620698212,
+    "link_share": 344
+  },
+  {
+    "website": "breitbart.com",
+    "user_name": "Mz. J.",
+    "user_id": 620698212,
+    "link_share": 194
+  },
+  {
+    "website": "youtube.com",
+    "user_name": "CAROLYN ZORN",
+    "user_id": 620698212,
+    "link_share": 82
+  },
+  {
+    "website": "foxnews.com",
+    "user_name": "Donna4Donald",
+    "user_id": 620698212,
+    "link_share": 62
+  },
+  {
+    "website": "youtube.com",
+    "user_name": "Stacy D VanDeveer",
+    "user_id": 636721122,
+    "link_share": 112
+  },
+  {
+    "website": "youtube.com",
+    "user_name": "Alia Abu-Bakr",
+    "user_id": 838707284,
+    "link_share": 61
+  },
+  {
+    "website": "breitbart.com",
+    "user_name": "Barry Polis",
+    "user_id": 861780540,
+    "link_share": 20
+  },
+  {
+    "website": "facebook.com",
+    "user_name": "Mz. J.",
+    "user_id": 894274440,
+    "link_share": 82
+  },
+  {
+    "website": "nytimes.com",
+    "user_name": "August R. Correia",
+    "user_id": 894274440,
+    "link_share": 48
+  },
+  {
+    "website": "cnn.com",
+    "user_name": "Kaylee Crosley",
+    "user_id": 894274440,
+    "link_share": 18
+  },
+  {
+    "website": "Fake News",
+    "user_name": "Steven Leser",
+    "user_id": 924224208,
+    "link_share": 278
+  },
+  {
+    "website": "breitbart.com",
+    "user_name": "Penny Temeles",
+    "user_id": 924224208,
+    "link_share": 210
+  },
+  {
+    "website": "youtube.com",
+    "user_name": "CAROLYN ZORN",
+    "user_id": 924224208,
+    "link_share": 190
+  },
+  {
+    "website": "facebook.com",
+    "user_name": "Danielle Merckel",
+    "user_id": 924224208,
+    "link_share": 78
+  },
+  {
+    "website": "foxnews.com",
+    "user_name": "KRISTIE CHING",
+    "user_id": 924224208,
+    "link_share": 50
+  },
+  {
+    "website": "cnn.com",
+    "user_name": "Cloud Harrison",
+    "user_id": 924224208,
+    "link_share": 44
+  },
+  {
+    "website": "nytimes.com",
+    "user_name": "Mary",
+    "user_id": 1095902058,
+    "link_share": 111
+  },
+  {
+    "website": "youtube.com",
+    "user_name": "Raymond Trippy",
+    "user_id": 1280291174,
+    "link_share": 48
+  },
+  {
+    "website": "Fake News",
+    "user_name": "Merienne Lynch",
+    "user_id": 1345070202,
+    "link_share": 702
+  },
+  {
+    "website": "youtube.com",
+    "user_name": "Merienne Lynch",
+    "user_id": 1345070202,
+    "link_share": 332
+  },
+  {
+    "website": "breitbart.com",
+    "user_name": "Carolyn Abate",
+    "user_id": 1345070202,
+    "link_share": 100
+  },
+  {
+    "website": "facebook.com",
+    "user_name": "Marc Cirigliano",
+    "user_id": 1345070202,
+    "link_share": 19
+  },
+  {
+    "website": "foxnews.com",
+    "user_name": "Donna4Donald",
+    "user_id": 1345070202,
+    "link_share": 15
+  },
+  {
+    "website": "nytimes.com",
+    "user_name": "Penny Temeles",
+    "user_id": 1347044432,
+    "link_share": 115
+  },
+  {
+    "website": "cnn.com",
+    "user_name": "Humaira Ghilzai",
+    "user_id": 1551225505,
+    "link_share": 122
+  },
+  {
+    "website": "nytimes.com",
+    "user_name": "Teri Genova",
+    "user_id": 1551225505,
+    "link_share": 67
+  },
+  {
+    "website": "youtube.com",
+    "user_name": "StrongerTogether",
+    "user_id": 1551225505,
+    "link_share": 40
+  },
+  {
+    "website": "Fake News",
+    "user_name": "Ralph Mattioli",
+    "user_id": 1607353381,
+    "link_share": 183
+  },
+  {
+    "website": "breitbart.com",
+    "user_name": "StrongerTogether",
+    "user_id": 1607353381,
+    "link_share": 125
+  },
+  {
+    "website": "foxnews.com",
+    "user_name": "Tim Paluch",
+    "user_id": 1607353381,
+    "link_share": 47
+  },
+  {
+    "website": "youtube.com",
+    "user_name": "Dawn Wildman",
+    "user_id": 1607353381,
+    "link_share": 37
+  },
+  {
+    "website": "cnn.com",
+    "user_name": "Oumar Niane",
+    "user_id": 1607353381,
+    "link_share": 20
+  },
+  {
+    "website": "cnn.com",
+    "user_name": "wossene bowler",
+    "user_id": 1659349220,
+    "link_share": 27
+  },
+  {
+    "website": "nytimes.com",
+    "user_name": "Ralph Mattioli",
+    "user_id": 2225723936,
+    "link_share": 88
+  },
+  {
+    "website": "cnn.com",
+    "user_name": "Harold Lafleur",
+    "user_id": 2244289393,
+    "link_share": 23
+  },
+  {
+    "website": "facebook.com",
+    "user_name": "Brittney Dilts",
+    "user_id": 2251995440,
+    "link_share": 19
+  },
+  {
+    "website": "nytimes.com",
+    "user_name": "NJEstates3 REALTOR",
+    "user_id": 2321335220,
+    "link_share": 73
+  },
+  {
+    "website": "cnn.com",
+    "user_name": "Geoffrey K. Olufemi",
+    "user_id": 2753095495,
+    "link_share": 66
+  },
+  {
+    "website": "Fake News",
+    "user_name": "Felicia Curtin",
+    "user_id": 2967626975,
+    "link_share": 337
+  },
+  {
+    "website": "youtube.com",
+    "user_name": "Felicia Curtin",
+    "user_id": 2967626975,
+    "link_share": 327
+  },
+  {
+    "website": "breitbart.com",
+    "user_name": "Darice McGuire",
+    "user_id": 2967626975,
+    "link_share": 141
+  },
+  {
+    "website": "foxnews.com",
+    "user_name": "Larry Kutcher",
+    "user_id": 2967626975,
+    "link_share": 40
+  },
+  {
+    "website": "facebook.com",
+    "user_name": "P. Blackshear",
+    "user_id": 2967626975,
+    "link_share": 32
+  },
+  {
+    "website": "nytimes.com",
+    "user_name": "Mary",
+    "user_id": 3127713395,
+    "link_share": 43
+  },
+  {
+    "website": "cnn.com",
+    "user_name": "January Beeler",
+    "user_id": 3220577634,
+    "link_share": 17
+  }
+]

@@ -58,7 +58,7 @@ function drawMap(rootDOM,data, geoJSON){
 		.enter()
 		.append("circle")
 		.attr("class","node")
-		.attr("r",4)
+		.attr("r",20)
 		.attr('transform', d => {
 			const xy = projection(d.lngLat);
 			return `translate(${xy[0]}, ${xy[1]})`;
@@ -92,7 +92,28 @@ function drawMap(rootDOM,data, geoJSON){
 				      .attr("class", "points")
 				      .attr("opacity",0.75);
 		});
+	
+	//Force layout
+		const force_X = d3.forceX().x(d => W/2);// similar to our own module
+		const force_Y = d3.forceY().y(d => H/2);
+		const force_collide = d3.forceCollide(20);
 
+		const simulation = d3.forceSimulation()
+			.force("x",force_X)
+			.force("y",force_Y)
+			.force("collide", force_collide);
+
+		simulation.nodes(data)
+			.on("tick", () => {
+				//called repeatly 
+				//console.log(dataByYear[1])
+				nodes
+					.attr('transform', d => {
+			const xy = projection(d.lngLat);
+			return `translate(${xy[0]}, ${xy[1]})`;
+		});
+			})
+			.restart();
 }
 
 

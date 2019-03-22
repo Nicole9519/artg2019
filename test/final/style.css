@@ -16,7 +16,24 @@ html,body,div{
   float:left;
 }
 
+.module2{
+  height:100%;
+  width:100%;
+  float:left;
+}
 
+.chart1{
+  height:100%;
+  width:100%;
+  float:left;
+}
+
+
+.chart{
+  width:480px;
+  height:400px;
+  float:left;
+}
 
 
 #tooltip{    
