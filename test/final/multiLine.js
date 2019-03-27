@@ -15,7 +15,7 @@ Promise.all([dataPromise,incomePromise,districtPromise])
 	.then(([housing,income,districtMap]) => {
 		//console.log(housing);
 
-		const parseDate = d3.timeParse("%Y-%m-%d")
+		const parseDate = d3.timeParse("%m/%d/%y")
 
 		const formatTime = d3.timeFormat("%Y");
     
@@ -27,8 +27,8 @@ Promise.all([dataPromise,incomePromise,districtPromise])
 			return [a.key,a.values]
 		})
 		const incomeMap = new Map(income_tem2)
-		console.log(incomeMap);
-		console.log(districtMap)
+		//console.log(incomeMap);
+		//console.log(districtMap)
 		const housing_ave = d3.nest()
 			.key(d => d.district)
 			.key(d => formatTime(parseDate(d.time)))
@@ -38,29 +38,52 @@ Promise.all([dataPromise,incomePromise,districtPromise])
 
 		
 		/*用map合并数据*/
-		const housingAugmented = housing_ave.map(d => {
+		let housingAugmented = housing_ave.map(d => {
 			const name = districtMap.get(d.key);
 		
 			d.name = name;
 
-			const income = incomeMap.get(name);
-			
+			let income = incomeMap.get(name);
+			//console.log(income)
+
 			if(income){
-				d.income = income
+				var i;
+				for (i = 0; i < d.values.length; i++) { 
+ 					 d.values[i].income = income.filter(a => a.year === d.values[i].key);
+				}
+				
+			//	d.income = income
 			}
 
+			d.values = d.values.filter( a=> a.key === '2012' ||a.key === "2013" ||a.key === "2014" ||a.key === "2015" ||a.key === "2016" ||a.key === "2017" );
 
-		}) 
+			let res;
 
+			for (let i = 0; i < d.values.length; i++) {
+				d.values[i].income = d.values[i].income[0].income
+			}
+
+			d.values =d.values.sort(function(x, y){
+   				return d3.descending(x.key, y.key);
+			})
+
+			return d;
+
+		});
+
+	
+
+		console.log(housingAugmented)
+	
+
+
+
+		//const data = transform(year, housingAugmented);
+		
+		//const year = [[8,"haidian"],[2,"xicheng"],[1,"dongcheng"],[4,"changping"]];
 		
 
-
-		// const data = transform("8", housing);
-		
-		// const year = [[8,"haidian"],[2,"xicheng"],[1,"dongcheng"],[4,"changping"]] 
-		// console.log(data)
-
-		//render(data);
+		render(housingAugmented);
 		
 		// const menu = d3.select(".nav")
 		// 				.append("select");
@@ -91,26 +114,27 @@ function drawLinechart(rootDOM, data){
 		const margin = {t:32, r:32, b:64, l:64};
 		const innerWidth = W - margin.l - margin.r;
 		const innerHeight = H - margin.t - margin.b;
+		const parseTime = d3.timeParse("%Y");
 
-		const scaleX = d3.scaleLinear().domain([2010,2020]).range([0, innerWidth]);
-		const scaleY = d3.scaleLinear().domain([0,100 ]).range([innerHeight, 0]);
+		const scaleX = d3.scaleLinear().domain(d3.extent(data, function(d) { return d.key; })).range([0, innerWidth]);
+		const scaleY = d3.scaleLinear().domain([0,20]).range([innerHeight, 0]);
 
 		//take array of xy values, and produce a shape attribute for <path> element
 		const lineGenerator = d3.line()
-			.x(d => scaleX(+d.key))
-			.y(d => scaleY(d.value)); //function
+			.x(d => scaleX(d.key))
+			.y(d => scaleY(d.value*31.6/d.income/2.45)); //function
 		const areaGenerator = d3.area()
-			.x(d => scaleX(+d.key))
+			.x(d => scaleX(d.key))
 			.y0(innerHeight)
-			.y1(d => scaleY(d.value));
+			.y1(d => scaleY(d.value*31.6/d.income/2.45));
 
 		const axisX = d3.axisBottom()
 			.scale(scaleX)
-			.tickFormat(function(value){ return "'"+String(value).slice(-2)})
-
+			//.tickFormat(function(value){ return "'"+String(value).slice(-2)})
+			.ticks(6)
 		const axisY = d3.axisLeft()
 			.scale(scaleY)
-			.tickSize(-innerWidth)
+			//.tickSize(-innerWidth)
 			.ticks(3)
 
 		//Build DOM structure
@@ -133,8 +157,8 @@ function drawLinechart(rootDOM, data){
 			.style('position','absolute')
 			.style('left',`${margin.l}px`)
 			.style('top',`0px`)
-		title.merge(titleEnter)
-			.html(key);
+		// title.merge(titleEnter)
+		// 	.html(key);
 
 		//Append rest of DOM structure in the enter selection
 		const plotEnter = svgEnter.append('g')
@@ -194,12 +218,12 @@ function drawLinechart(rootDOM, data){
 				const mouse = d3.mouse(this);
 				const mouseX = mouse[0];
 				const year = scaleX.invert(mouseX);
-				
-				const idx = bisect(data, year);
+				console.log(year)
+				const idx = d3.bisect(data, year);
 				const datum = data[idx];
-
+				console.log(idx)
 				plot.select('.tool-tip')
-					.attr('transform', `translate(${scaleX(datum.key)}, ${scaleY(datum.value)})`)
+					.attr('transform', `translate(${scaleX(datum.key)}, ${scaleY(datum.value*31.6/datum.income/2.45)})`)
 					.select('text')
 					.text(datum.value);
 
@@ -216,7 +240,7 @@ function drawLinechart(rootDOM, data){
 
 
 function transform(district, data){
-	const filterData = data.filter(d => d.district === district );
+	const filterData = data.filter(d => d.key === district );
 
 	return filterData;
 
