@@ -36,7 +36,7 @@ Promise.all([
 			}}) 
 			
 
-			console.log(migration_origin_by_country)
+		console.log(migration_origin_by_country)
 
 		//YOUR CODE HERE
 		//Then, join the transformed migration data to the lngLat values in the metadata
@@ -47,11 +47,13 @@ Promise.all([
 			d.origin_code = origin_code;
 
 			const meta = metadataMap.get(origin_code)
+			
 			if(meta){
 			d.lngLat = meta.lngLat;
 			d.subregion = meta.subregion;
 			d.name_display = meta.name_display;
 			}
+			
 			return d
 		})
 
